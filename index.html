@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Population visualizer</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+
+  <script src="https://unpkg.com/deck.gl@8.9.28/dist.min.js"></script>
+  <script src="https://unpkg.com/@deck.gl/geo-layers@8.9.28/dist.min.js"></script>
+
+  <script src="https://unpkg.com/@turf/turf@6.5.0/turf.min.js"></script>
+
+
+</head>
+<body>
+  <div id="container"></div>
+
+  <div style="position: absolute; top: 10px; left: 10px; z-index: 10; background: white; padding: 10px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); font-family: sans-serif;">
+    <label for="mode-select">Visualization:</label>
+    <select id="mode-select">
+      <option value="building" selected>Building Height</option>
+      <option value="dome">Population Dome</option>
+    </select>
+  </div>
+<script src="main.js"></script>
+
+</body>
+</html>
