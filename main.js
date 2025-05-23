@@ -6,14 +6,15 @@ const INITIAL_VIEW_STATE = {
     zoom: 15,
     pitch: 45,
     bearing: 0,
-    maxZoom: 15,
-    minZoom: 11 
+    //maxZoom: 15,
+    //minZoom: 11 
   };
-  mapboxgl.accessToken = 'pk.eyJ1Ijoic3Rlcm5sZW8iLCJhIjoiY21hc2t5b2Z5MGZmazJwczU0eGduZzNzbSJ9.Z5Okc5xnXjC_LRJDECX9tQ';
+  //mapboxgl.accessToken = 'pk.eyJ1Ijoic3Rlcm5sZW8iLCJhIjoiY21hc2t5b2Z5MGZmazJwczU0eGduZzNzbSJ9.Z5Okc5xnXjC_LRJDECX9tQ';
   
   const deckgl = new deck.DeckGL({
     container: 'container',
-    mapStyle: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
+    mapStyle: 'https://api.maptiler.com/maps/bright/style.json?key=IcLmXlHFSECJQQ9T78K5',
+    mapLib: maplibregl,
     initialViewState: INITIAL_VIEW_STATE,
     controller: true,
     layers: [], 
