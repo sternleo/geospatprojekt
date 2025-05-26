@@ -1,16 +1,14 @@
 const BOUNDS = [13.1504452, 55.6821874, 13.2577124, 55.7373334];
-
+//camera
 const INITIAL_VIEW_STATE = {
     longitude: 13.1910,
     latitude: 55.7047,
     zoom: 15,
     pitch: 45,
     bearing: 0,
-    //maxZoom: 15,
-    //minZoom: 11 
   };
-  //mapboxgl.accessToken = 'pk.eyJ1Ijoic3Rlcm5sZW8iLCJhIjoiY21hc2t5b2Z5MGZmazJwczU0eGduZzNzbSJ9.Z5Okc5xnXjC_LRJDECX9tQ';
-  
+
+//init deckgl with maplibre and maptiler map
   const deckgl = new deck.DeckGL({
     container: 'container',
     mapStyle: 'https://api.maptiler.com/maps/bright/style.json?key=IcLmXlHFSECJQQ9T78K5',
@@ -28,7 +26,7 @@ const INITIAL_VIEW_STATE = {
       }
   });
   
-
+//load building data
   fetch('lund_buildings_simpopFIXED.geojson')
   .then(res => res.json())
   .then(geojson => {
@@ -51,7 +49,8 @@ const INITIAL_VIEW_STATE = {
   
   function updateBuildingsLayer() {
     if (!geojsonData) return;
-  
+
+    //building layer
     if (currentMode === 'building') {
       const buildingsLayer = new deck.GeoJsonLayer({
         id: 'buildings-layer',
@@ -61,6 +60,7 @@ const INITIAL_VIEW_STATE = {
         opacity: 0.9,
         getElevation: f => (f.properties.population || 1) * 2,
         getFillColor: f => {
+          //color ramp
           const pop = f.properties.population || 0;
           const maxPop = 100;
           const t = Math.min(pop / maxPop, 1);
@@ -74,7 +74,7 @@ const INITIAL_VIEW_STATE = {
       });
   
       deckgl.setProps({ layers: [buildingsLayer] });
-
+    //coverage layer
     } else if (currentMode === 'dome') {
       const terrainLayer = new deck.TerrainLayer({
         id: 'population-dome',
